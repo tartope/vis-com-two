@@ -38,27 +38,31 @@ def signup(request):
     return render(request, "authentication/signup.html")
 
 
+# See Django docs: How to log a user in (https://docs.djangoproject.com/en/4.1/topics/auth/default/#auth-web-requests)
 def log_in(request):
     # take all form fields entered by user and store it in a variable; can be written two ways:
     # username = request.POST.get('username')
+
+    # if they go to the login webpage and login (POST) then do soemthing; else, just show the login page:
+    # if user goes to the login page and fills it out (POSTed something)
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
         # print(username, password)
-        # authenticate the user (this returns a None response if the user is not authenticated; or not None response if the user is authenticated)
+        # authenticate the user (this returns a "None" response if the user is not authenticated; or "not None" response if the user is authenticated)
         user = authenticate(username=username, password=password)
 
-        # check if user is not None (authenticated), login, and use dictionary to send welcome message in index.html
+        # check if user is not None (authenticated), login below, and use dictionary below to send welcome message in index.html:
         if user is not None:
             login(request, user)
             username = user.username
             return render(request, "authentication/index.html", {'username': username})
-        # if user is None (not authenticated), send error message and redirect to home page
+        # else, if user is None (not authenticated), send error message and redirect to home page
         else:
             messages.error(request, "Bad credentials")
             return redirect('home')
 
-
+    # else, just render the page
     return render(request, "authentication/login.html")
 
 

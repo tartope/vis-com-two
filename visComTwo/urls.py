@@ -33,3 +33,11 @@ urlpatterns = [
 # gives the above urls different extensions; whatever this returns, it replaces the urlpatterns variable; changes the view in the browser (also add 'format=None' parameter in views)
 # import this above
 urlpatterns = format_suffix_patterns(urlpatterns)
+
+# Configure Admin Titles:
+# Site Header
+admin.site.site_header = "VisComTwo Administration Page"
+# Site Title
+admin.site.site_title = "VisComTwo Admin"
+# Site Subheader
+admin.site.index_title = "Welcome to VisComTwo Admin Area"
