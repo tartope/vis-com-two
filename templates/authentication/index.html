@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication</title>
+</head>
+<body>
+
+    <!-- Displays the success error messages -->
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissable fade show" role="alert">
+    <strong>Message: </strong> {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    {% endfor %}
+
+    <!-- Message on home screen -->
+    <h3>Welcome to VisComTwo</h3>
+
+    <!-- If user is authenticated, show message upon login, and show logout button-->
+    {% if user.is_authenticated %}
+    <h3>Hello {{ username }}</h3>
+    <h4>You are successfully logged in!</h4>
+    <button type="submit"> <a href="/logOut">Logout</a> </button>
+
+    <!-- Else, show signup/login -->
+    {% else %}
+    <button type="submit"> <a href="/signup">Signup</a> </button>
+    <button type="submit"> <a href="/log_in">Login</a> </button>
+    {% endif %}
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <h3>Login</h3>
+    <!-- action is the route, and method is POST -->
+    <form action="/log_in" method="post">
+        <!-- In Django, don't forget to use csrf token after a form -->
+        {% csrf_token %}
+        <label for="">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter username" required>
+        <!-- br separates everything on its own line -->
+        <br>
+
+        <label for="">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter password" required>
+        <br>
+
+        <button type="login">Login</button>
+    </form>
+</body>
+</html>
+
+<!-- create login form in here -->
+<!-- after creating form, build login function in authentication/views.py -->
