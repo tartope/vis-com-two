@@ -31,7 +31,7 @@
     <!-- Message on home screen -->
     <h3>Welcome to VisComTwo</h3>
 
-    <!-- If user is authenticated, show message upon login, and show logout button-->
+    <!-- If user is authenticated (logged in), show message upon login, and show logout button-->
     {% if user.is_authenticated %}
     <h3>Hello {{ username }}</h3>
     <h4>You are successfully logged in!</h4>
